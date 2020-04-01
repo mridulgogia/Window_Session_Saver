@@ -1,0 +1,33 @@
+.popup_header{
+        padding: 15px;
+        padding-right: 0;
+        padding-bottom: 0;
+    >.popup{
+        &_logo{
+            background-image: url('../assets/session_saver_icon.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            margin-bottom: 0;
+        }
+
+        &_title{
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        &_input{
+            display: inline-block;
+            > .popup_input-form{
+                height: calc(1.5em + 0.5rem);
+            }
+        }
+
+        &_btn{
+            margin-left: 15px;
+        }
+    }
+}
