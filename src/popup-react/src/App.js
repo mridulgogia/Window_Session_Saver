@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import './stylesheets/_index.scss';
 import './stylesheets/vendor/bootstrap.min.css';
 
@@ -13,9 +13,16 @@ const [list, setList] = useState([{
   name: 'bcd'
 }]);
 
+const browserRef = useRef(window);
+
+const onClickAdd = () => {
+  // const tabList = browser.tabs.query({currentWindow: true});
+  // console.log(tabList);
+}
+
   return (
     <div className="App">
-      <Header />
+      <Header onClickAdd={onClickAdd}/>
       <hr />
       <Body list={list} />
     </div>
