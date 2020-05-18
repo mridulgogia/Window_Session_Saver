@@ -13,10 +13,18 @@ function reloadTabs() {
           .create({
             url: tabList[value],
           })
-          .catch((err) => alert("There are some invalid URL's"));
+          .catch((err) =>
+            browser.windows.create({
+              url: "https://google.com",
+            })
+          );
       }
     })
-    .catch((err) => alert("There are some invalid URL's"));
+    .catch((err) =>
+      browser.windows.create({
+        url: "https://google.com",
+      })
+    );
 }
 
 function isEmpty(obj) {
@@ -25,6 +33,7 @@ function isEmpty(obj) {
   }
   return true;
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   render();
 
@@ -35,7 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((tabs) => {
         let arr = [];
-        arr = tabs.map((item) => item.url);
+        arr = tabs.map((item, index) => {
+          console.log("tabs ", index, " ", item);
+          return item.url;
+        });
 
         refLocalStorage
           .get()
@@ -57,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               });
 
-              refInput.removeEventListener("change");
               return;
             }
 
@@ -76,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 });
 
-                refInput.removeEventListener("change");
                 return;
               }
             } else {
